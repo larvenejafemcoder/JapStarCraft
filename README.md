@@ -125,75 +125,9 @@ graph TB
 
 ---
 
-## Diagram 2: 3D Scene Graph — Hero Scene
-
-```mermaid
-graph TD
-    subgraph "Hero Canvas (R3F)"
-        Scene[Scene]
-        CameraRig[CameraRig<br>Orbit radius 9<br>speed 0.12 rad/s]
-        Renderer[WebGLRenderer<br>antialias:true]
-    end
-    
-    subgraph "Lighting"
-        Ambient[AmbientLight<br>#112244 intensity 1.5]
-        Directional[DirectionalLight<br>#ffffff intensity 2<br>position 5,3,5]
-        Point[PointLight<br>#1a9fff intensity 3<br>position -4,2,3]
-    end
-    
-    subgraph "Objects"
-        Stars[Stars<br>@react-three/drei<br>7000 particles<br>radius 200]
-        Planet[Planet<br>SphereGeometry r:2<br>64x64 segments<br>PhongMaterial #1155aa]
-        
-        subgraph "Continents (420 patches)"
-            Continent1[Patch x70<br>SphereGeometry r:1<br>6x6 segments<br>Green/Brown]
-            Continent2[Patch x70<br>...]
-            ContinentN[Patch x280<br>...]
-        end
-        
-        subgraph "Atmosphere"
-            Outer[Outer sphere r:2.2<br>BackSide<br>10% cyan]
-            Wireframe[Wireframe r:2.25<br>6% opacity<br>#88ccff]
-        end
-        
-        subgraph "Battlecruisers"
-            Lead[Lead Ship<br>position 3.5,2.2,2<br>scale 1.0]
-            Support[Support Ship<br>position 4.2,0.8,-1.5<br>scale 0.55]
-            Scout[Scout Ship<br>position 5,-0.5,0.5<br>scale 0.35]
-        end
-        
-        subgraph "Combat Effects"
-            Lasers[LaserBeam xN<br>CylinderGeometry<br>Square cross-section]
-            Flashes[ImpactFlash xN<br>SphereGeometry<br>Expanding scale]
-            Lights[ImpactLight xN<br>PointLight<br>Fading intensity]
-        end
-    end
-    
-    Scene --> Ambient
-    Scene --> Directional
-    Scene --> Point
-    Scene --> Stars
-    Scene --> Planet
-    Planet --> Continent1
-    Planet --> Continent2
-    Planet --> ContinentN
-    Planet --> Outer
-    Planet --> Wireframe
-    Scene --> Lead
-    Scene --> Support
-    Scene --> Scout
-    Scene --> Lasers
-    Scene --> Flashes
-    Scene --> Lights
-    
-    style Planet fill:#1e3a8a,stroke:#60a5fa
-    style Lead fill:#991b1b,stroke:#ef4444
-    style Lasers fill:#eab308,stroke:#fbbf24
-```
-
 ---
 
-## Diagram 3: Component Lifecycle & Data Flow
+## Diagram 2: Component Lifecycle & Data Flow
 
 ```mermaid
 sequenceDiagram
@@ -249,7 +183,7 @@ sequenceDiagram
 
 ---
 
-## Diagram 4: Z-Index Stacking Context
+## Diagram 3: Z-Index Stacking Context
 
 ```mermaid
 graph TB
@@ -321,7 +255,7 @@ graph TB
 
 ---
 
-## Diagram 5: Battlecruiser Component Architecture
+## Diagram 4: Battlecruiser Component Architecture
 
 ```mermaid
 graph LR
@@ -398,7 +332,7 @@ graph LR
 
 ---
 
-## Diagram 6: Quantum Core Scene Graph
+## Diagram 5: Quantum Core Scene Graph
 
 ```mermaid
 graph TD
@@ -481,63 +415,11 @@ graph TD
 
 ---
 
-## Diagram 7: Animation Timing Chart
 
-```mermaid
-gantt
-    title Animation Timeline (page load)
-    dateFormat ss.SSS
-    
-    section Entrance
-    "Navbar slideIn (y -60 to 0)"    :0.000, 0.8s
-    "Hero meta fade + slide"       :0.000, 0.6s
-    "Hero stats (3 items)"        :0.800, 0.6s
-    "Hero sector status"          :1.000, 0.6s
-    "Hero deploy button"          :1.200, 0.7s
-    "AnimatedText REDSTAR (8 chars, staggered 0.04s each)" :0.000, 0.32s
-    "AnimatedText DIVISION (8 chars)" :0.000, 0.32s
-    
-    section Scroll-triggered
-    "Fleet h2"                    :after hero, 0.6s
-    "Fleet p"                     :after hero, 0.5s
-    "Fleet tile 1 (delay 0s)"     :after hero, 0.5s
-    "Fleet tile 2 (delay 0.1s)"   :after hero, 0.5s
-    "Fleet tile 3 (delay 0.2s)"   :after hero, 0.5s
-    "Fleet tile 4 (delay 0.3s)"   :after hero, 0.5s
-    "Fleet tile 5 (delay 0.4s)"   :after hero, 0.5s
-    "Fleet tile 6 (delay 0.5s)"   :after hero, 0.5s
-    
-    "CinematicGrid tiles (stagger 0.1s)" :after fleet, 0.5s
-    "MissionBriefing panel"       :after cinematic, 0.7s
-    
-    section Continuous (R3F)
-    "Planet rotation (0.08 rad/s)"    :0.000, active
-    "Planet bob (0.5Hz, 0.3 amplitude)" :0.000, active
-    "Atmosphere counter-rotation (-0.02)" :0.000, active
-    "Camera orbit (0.12 rad/s)"   :0.000, active
-    "Cruiser drift (0.3-0.5Hz)"   :0.000, active
-    "Laser combat (random 300-800ms)" :0.000, active
-    
-    section Continuous (Quantum)
-    "Core cube rotation (0.003/frame)"   :2.000, active
-    "Core cube breathing (2Hz)"   :2.000, active
-    "Inner cube counter-rotation (0.01/frame)" :2.000, active
-    "Particles drift upward"       :2.000, active
-    "Center light pulsing (4Hz)"   :2.000, active
-    "Mouse tracking camera"        :2.000, active
-    
-    section CSS Continuous
-    "Pulse dot (1.8s cycle)"       :0.000, infinite
-    "Cinematic flicker (4s cycle)" :0.000, infinite
-    "Matrix terminal columns (random 10-22s)" :0.000, infinite
-    "Data stream sweep (8s/12s)"   :0.000, infinite
-    "Energy pulse (6s cycle)"      :0.000, infinite
-    "Global scanlines (0.1s loop)" :0.000, infinite
-```
 
 ---
 
-## Diagram 8: MatrixTerminal System
+## Diagram 6: MatrixTerminal System
 
 ```mermaid
 flowchart TB
@@ -611,7 +493,7 @@ flowchart TB
 
 ---
 
-## Diagram 9: CSS Layer & Atmospheric System
+## Diagram 7: CSS Layer & Atmospheric System
 
 ```mermaid
 graph TB
@@ -690,7 +572,7 @@ graph TB
 
 ---
 
-## Diagram 10: Performance & Bundle Analysis
+## Diagram 8: Performance & Bundle Analysis
 
 ```mermaid
 graph LR
